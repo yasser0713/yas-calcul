@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome to My Website</h1>
+    <p>This is a simple HTML template.</p>
+</body>
+</html>
+<script>
+    // Example of linear map formulas
+    function linearMap(x, domainMin, domainMax, rangeMin, rangeMax) {
+        return rangeMin + ((x - domainMin) * (rangeMax - rangeMin)) / (domainMax - domainMin);
+    }
+
+    // Example usage
+    const input = 5;
+    const domainMin = 0;
+    const domainMax = 10;
+    const rangeMin = 0;
+    const rangeMax = 100;
+
+    const result = linearMap(input, domainMin, domainMax, rangeMin, rangeMax);
+    console.log(`Mapped value: ${result}`);
+</script>
