@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .calculator {
+            margin-top: 30px;
+        }
+        input, button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to High Calculator</h1>
+    <p>This is a simple calculator application.</p>
+
+    <!-- Calculator Section -->
+    <div class="calculator">
+        <h2>Calculator</h2>
+        <input type="number" id="num1" placeholder="Enter first number">
+        <input type="number" id="num2" placeholder="Enter second number (optional)">
+        <br>
+        <button onclick="calculate('+')">+</button>
+        <button onclick="calculate('-')">-</button>
+        <button onclick="calculate('*')">×</button>
+        <button onclick="calculate('/')">÷</button>
+        <button onclick="calculate('%')">%</button>
+        <button onclick="calculate('**')">^</button>
+        <button onclick="calculate('exp')">exp</button>
+        <button onclick="calculate('log')">log</button>
+        <button onclick="calculate('reciprocal')">1/x</button>
+        <button onclick="calculate('poly')">Polynomial</button>
+        <button onclick="calculate('root')">Root</button>
+        <button onclick="calculate('sin')">sin</button>
+        <button onclick="calculate('cos')">cos</button>
+        <br>
+        <h3 id="result">Result: </h3>
+    </div>
+
+    <script>
+        function calculate(operator) {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            let result;
+
+            if (isNaN(num1)) {
+                result = "Please enter a valid number for the first input.";
+            } else {
+                switch (operator) {
+                    case '+':
+                        result = num1 + (isNaN(num2) ? 0 : num2);
+                        break;
+                    case '-':
+                        result = num1 - (isNaN(num2) ? 0 : num2);
+                        break;
+                    case '*':
+                        result = num1 * (isNaN(num2) ? 1 : num2);
+                        break;
+                    case '/':
+                        result = num2 !== 0 ? num1 / num2 : "Cannot divide by zero.";
+                        break;
+                    case '%':
+                        result = num1 % (isNaN(num2) ? 1 : num2);
+                        break;
+                    case '**':
+                        result = Math.pow(num1, isNaN(num2) ? 2 : num2);
+                        break;
+                    case 'exp':
+                        result = Math.exp(num1); // Exponential function
+                        break;
+                    case 'log':
+                        result = num1 > 0 ? Math.log(num1) : "Logarithm undefined for non-positive numbers.";
+                        break;
+                    case 'reciprocal':
+                        result = num1 !== 0 ? 1 / num1 : "Reciprocal undefined for zero.";
+                        break;
+                    case 'poly':
+                        result = num1 ** 2 + 2 * num1 + 1; // Example: Polynomial x^2 + 2x + 1
+                        break;
+                    case 'root':
+                        result = num1 >= 0 ? Math.sqrt(num1) : "Root undefined for negative numbers.";
+                        break;
+                    case 'sin':
+                        result = Math.sin(num1); // Sine function
+                        break;
+                    case 'cos':
+                        result = Math.cos(num1); // Cosine function
+                        break;
+                    default:
+                        result = "Invalid operation.";
+                }
+            }
+
+            document.getElementById('result').innerText = `Result: ${result}`;
+        }
+    </script>
+</body>
+</html>
